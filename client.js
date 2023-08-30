@@ -15,36 +15,36 @@ const connect = function() {
     // code that does something when the connection is first established
     console.log("Successfully connected to game server ");
     conn.write("Name: EMP");
-
+  
     // conn.write("Move: down");
-    setTimeout(() => {
-      conn.write("Move: up");
-    }, 500);
+    //   setTimeout(() => {
+    //     conn.write("Move: up");
+    //   }, 500);
 
-    setTimeout(() => {
-      conn.write(("Move: right"));
-    }, 1000);
-    setTimeout(() => {
-      conn.write("Move: left");
-    }, 1500);
+    //   setTimeout(() => {
+    //     conn.write(("Move: right"));
+    //   }, 1000);
+    //   setTimeout(() => {
+    //     conn.write("Move: left");
+    //   }, 1500);
  
   });
 
   conn.on("data", (data) => {
-    console.log(data.toString());
+    console.log(data);
   });
 
-  conn.on("close", () => {
-    console.log("Connection closed");
-  });
+  // conn.on("close", () => {
+  //   console.log("Connection closed");
+  // });
 
-  conn.on("error", (err) => {
-    console.log("Error: ", err);
-  });
+  // conn.on("error", (err) => {
+  //   console.log("Error: ", err);
+  // });
 
-  conn.on("end", () => {
-    console.log("Connection ended");
-  });
+  // conn.on("end", () => {
+  //   console.log("Connection ended");
+  // });
 
   // conn.on("drain", () => {
   //   console.log("Connection drained");
@@ -65,10 +65,11 @@ const connect = function() {
   // }, 500);
 
 
-  // return conn; //conn object that Node returned to you represents the connection that you have with the server.
+  return conn; //conn object that Node returned to you represents the connection that you have with the server.
 
   // The conn object is full of useful methods and properties that can now be used to interact with the server!
 };
+
 module.exports = { connect };
 // console.log("Connecting ...");
-// connect();
+//connect();
