@@ -1,11 +1,7 @@
-const { connect } = require('./client');
-
-console.log('Connecting ...');
-
-connect();
-
-// setup interface to handle user input from stdin
-// stdin listen and react to keyboard input
+const { connect } = require("./client");
+const { setupInput } = require("./input");
+console.log("Connecting ...");
+//const conn = connect();
 const setupInput = function () {
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -14,4 +10,4 @@ const setupInput = function () {
   return stdin;
 };
 
-module.exports = { connect };
+setupInput(connect());
