@@ -7,8 +7,7 @@ This is simply a multiplayer take on the genre.
 Before you can run this client, you will need to be running the server side which you can download and install from here. 
 
 ## Final Product
-<img width="682" alt="Screenshot 2023-09-13 at 6 59 35 PM" src="https://github.com/emmap88/snake-client/assets/35646411/9d850251-a67b-4eaa-ba3e-39ee8a0fb1e0">
-<img width="638" alt="Screenshot 2023-09-13 at 6 23 42 PM" src="https://github.com/emmap88/snake-client/assets/35646411/5c6b7911-f5da-4ec3-8c8b-9f034c6bc96d">
+<img width="682" alt="Screenshot 2023-09-13 at 6 59 35 PM" src="https://github.com/emmap88/snake-client/assets/35646411/9d850251-a67b-4eaa-ba3e-39ee8a0fb1e0"><img width="638" alt="Screenshot 2023-09-13 at 6 23 42 PM" src="https://github.com/emmap88/snake-client/assets/35646411/5c6b7911-f5da-4ec3-8c8b-9f034c6bc96d">
 
 ## Getting Started
 
