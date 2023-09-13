@@ -18,10 +18,8 @@ const setupInput = function (conn) {
   stdin.resume();
 
   // Handle user key presses
-  stdin.on("data", (key) => {
-    handleUserInput(key);
-  });
-
+  stdin.on("data", handleUserInput);
+  
   // Return configured stdin
   return stdin;
 };
@@ -29,25 +27,25 @@ const setupInput = function (conn) {
 // Handle user input
 const handleUserInput = (key) => {
   // Move up if allowed
-  if (key === "w" && currentDirection !== "down") {
+  if (key === "w") {
     connection.write("Move: up");
     currentDirection = "up";
   }
 
   // Move left if allowed
-  if (key === "a" && currentDirection !== "right") {
+  if (key === "a") {
     connection.write("Move: left");
     currentDirection = "left";
   }
 
   // Move down if allowed
-  if (key === "s" && currentDirection !== "up") {
+  if (key === "s") {
     connection.write("Move: down");
     currentDirection = "down";
   }
 
   // Move right if allowed
-  if (key === "d" && currentDirection !== "left") {
+  if (key === "d") {
     connection.write("Move: right");
     currentDirection = "right";
   }
