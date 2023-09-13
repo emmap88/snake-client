@@ -1,69 +1,80 @@
+// Declare variable to hold server connection
 let connection;
-let currentDirection = null; 
-// setup interface to handle user input from stdin
-// stdin listen and react to keyboard input
-const setupInput = function(conn) {
+
+// Track current direction snake is moving
+let currentDirection = null;
+
+// Set up handler for user input from keyboard
+const setupInput = function (conn) {
+  // Save connection to write to it on input
   connection = conn;
+
+  // Configure stdin for raw input mode
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
+
+  // Resume stdin if paused
   stdin.resume();
+
+  // Handle user key presses
   stdin.on("data", (key) => {
     handleUserInput(key);
   });
+
+  // Return configured stdin
   return stdin;
 };
+
+// Handle user input
 const handleUserInput = (key) => {
-
-  if (key === 'w' && currentDirection !== 'down') {
-    connection.write('Move: up');
-    currentDirection = 'up';
+  // Move up if allowed
+  if (key === "w" && currentDirection !== "down") {
+    connection.write("Move: up");
+    currentDirection = "up";
   }
 
-  if (key === 'a' && currentDirection !== 'right') {
-    connection.write('Move: left');
-    currentDirection = 'left';
+  // Move left if allowed
+  if (key === "a" && currentDirection !== "right") {
+    connection.write("Move: left");
+    currentDirection = "left";
   }
 
-  if (key === 's' && currentDirection !== 'up') {
-    connection.write('Move: down');
-    currentDirection = 'down'; 
+  // Move down if allowed
+  if (key === "s" && currentDirection !== "up") {
+    connection.write("Move: down");
+    currentDirection = "down";
   }
 
-  if (key === 'd' && currentDirection !== 'left') {
-    connection.write('Move: right');
-    currentDirection = 'right';
-  }
-  if (key === '\u0003') {
-    process.exit(); // Ctrl+C to quit
+  // Move right if allowed
+  if (key === "d" && currentDirection !== "left") {
+    connection.write("Move: right");
+    currentDirection = "right";
   }
 
-  if (key === 'k') {
-    connection.write('Say: Oh..!');
+  // Exit on Ctrl+C
+  if (key === "\u0003") {
+    process.exit();
+  }
+
+  // Send silly messages on 'k'
+  if (key === "k") {
+    connection.write("Say: Oh..!");
+
+    // Delayed message sequence
     setTimeout(() => {
-      connection.write('Say: Oops!');
-    }, 500);
-    setTimeout(() => {
-      connection.write('Say: Ahhh!');
-    }, 1000);
-    setTimeout(() => {
-      connection.write('Say: The Ennnnd!');
+      connection.write("Say: Oops!");
+
+      setTimeout(() => {
+        connection.write("Say: Ahhh!");
+
+        setTimeout(() => {
+          connection.write("Say: The Ennnnd!");
+        }, 500);
+      }, 1000);
     }, 2000);
-    setTimeout(() => {
-      connection.write('Say: What a Wooorld!');
-    }, 3000);
-  
   }
-//   connection.write("Move: down");
-//   setTimeout(() => {
-//     connection.write("Move: up");
-//   }, 500);
+};
 
-//   setTimeout(() => {
-//     connection.write(("Move: right"));
-//   }, 1000);
-//   setTimeout(() => {
-//     connection.write("Move: left");
-//   }, 1500);
- };
+// Export handler functions
 module.exports = { setupInput };
